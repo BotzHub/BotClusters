@@ -1,3 +1,4 @@
+
 FROM fedora:42
 
 ARG PYTHON_VERSION=3.10
@@ -15,10 +16,6 @@ RUN python${PYTHON_VERSION} -m ensurepip --upgrade && \
     alternatives --install /usr/bin/python3 python3 /usr/bin/python${PYTHON_VERSION} 1 && \
     alternatives --install /usr/bin/pip3 pip3 /usr/bin/pip${PYTHON_VERSION} 1
 
-RUN arch=$(arch | sed s/aarch64/arm64/ | sed s/x86_64/64/) && \
-    wget -q https://github.com/BtbN/FFmpeg-Builds/releases/download/latest/ffmpeg-n7.1-latest-linux${arch}-gpl-7.1.tar.xz && \
-    tar -xvf *xz && cp *7.1/bin/* /usr/bin && rm -rf *xz && rm -rf *7.1
-
 ENV SUPERVISORD_CONF_DIR=/etc/supervisor/conf.d
 ENV SUPERVISORD_LOG_DIR=/var/log/supervisor
 
@@ -30,6 +27,9 @@ WORKDIR /app
 
 COPY install.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/install.sh
+
+COPY --from=mwader/static-ffmpeg:7.1 /ffmpeg /bin/ffmpeg
+COPY --from=mwader/static-ffmpeg:7.1 /ffprobe /bin/ffprobe
 
 COPY requirements.txt ./
 RUN echo "supervisor" >> requirements.txt
