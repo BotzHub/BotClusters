@@ -1,4 +1,3 @@
-
 FROM fedora:42
 
 ARG PYTHON_VERSION=3.10
