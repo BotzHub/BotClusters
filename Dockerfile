@@ -1,19 +1,15 @@
 FROM fedora:42
 
-ARG PYTHON_VERSION=3.9
-ENV PYTHON_VERSION=${PYTHON_VERSION}
-
 RUN dnf -y update && \
     dnf -y install \
     g++ make wget pv git bash xz \
-    python3-pip \
+    python39-pip \
     mediainfo psmisc procps-ng supervisor && \
     dnf clean all
 
-RUN python${PYTHON_VERSION} -m ensurepip --upgrade && \
-    python${PYTHON_VERSION} -m pip install --upgrade pip setuptools && \
-    alternatives --install /usr/bin/python3 python3 /usr/bin/python${PYTHON_VERSION} 1 && \
-    alternatives --install /usr/bin/pip3 pip3 /usr/bin/pip${PYTHON_VERSION} 1
+RUN python3.9 -m pip install --upgrade pip setuptools
+RUN alternatives --install /usr/bin/python3 python3 /usr/bin/python3.9 1 \
+ && alternatives --install /usr/bin/pip3    pip3    /usr/bin/pip3.9   1
 
 ENV SUPERVISORD_CONF_DIR=/etc/supervisor/conf.d
 ENV SUPERVISORD_LOG_DIR=/var/log/supervisor
