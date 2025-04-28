@@ -1,12 +1,11 @@
 FROM fedora:42
 
-ARG PYTHON_VERSION=3.10
+ARG PYTHON_VERSION=3.9
 ENV PYTHON_VERSION=${PYTHON_VERSION}
 
 RUN dnf -y update && \
     dnf -y install \
     g++ make wget pv git bash xz \
-    python${PYTHON_VERSION} python${PYTHON_VERSION}-devel \
     mediainfo psmisc procps-ng supervisor && \
     dnf clean all
 
