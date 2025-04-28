@@ -6,6 +6,7 @@ ENV PYTHON_VERSION=${PYTHON_VERSION}
 RUN dnf -y update && \
     dnf -y install \
     g++ make wget pv git bash xz \
+    python3-pip \
     mediainfo psmisc procps-ng supervisor && \
     dnf clean all
 
