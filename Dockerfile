@@ -7,10 +7,6 @@ RUN dnf -y update && \
     mediainfo psmisc procps-ng supervisor && \
     dnf clean all
 
-RUN python3 -m pip install --upgrade pip setuptools
-RUN alternatives --install /usr/bin/python3 python3 /usr/bin/python3.9 1 \
- && alternatives --install /usr/bin/pip3    pip3    /usr/bin/pip3.9   1
-
 ENV SUPERVISORD_CONF_DIR=/etc/supervisor/conf.d
 ENV SUPERVISORD_LOG_DIR=/var/log/supervisor
 
