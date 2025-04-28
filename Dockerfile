@@ -4,7 +4,7 @@ FROM fedora:42
 RUN dnf -y update && \
     dnf -y install \
     g++ make wget pv git bash xz \
-    python3.9 python3.9-pip \
+    python3.9 python3-pip \
     mediainfo psmisc procps-ng supervisor && \
     dnf clean all
 
