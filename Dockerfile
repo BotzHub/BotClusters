@@ -4,7 +4,7 @@ FROM fedora:42
 RUN dnf -y update && \
     dnf -y install \
     g++ make wget pv git bash xz \
-    python3.9 python3-pip \
+    python3.9 \
     mediainfo psmisc procps-ng supervisor && \
     dnf clean all
 
@@ -12,6 +12,9 @@ RUN dnf -y update && \
 RUN alternatives --install /usr/bin/python3 python3 /usr/bin/python3.9 1 && \
     alternatives --set python3 /usr/bin/python3.9 && \
     python3 --version
+
+# Install pip manually
+RUN curl -sS https://bootstrap.pypa.io/get-pip.py | python3
 
 # Environment variables
 ENV SUPERVISORD_CONF_DIR=/etc/supervisor/conf.d
