@@ -27,8 +27,8 @@ WORKDIR /app
 COPY install.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/install.sh
 
-COPY --from=mwader/static-ffmpeg:7.1 /ffmpeg /bin/ffmpeg
-COPY --from=mwader/static-ffmpeg:7.1 /ffprobe /bin/ffprobe
+COPY --from=mwader/static-ffmpeg:7.1.1 /ffmpeg /bin/ffmpeg
+COPY --from=mwader/static-ffmpeg:7.1.1 /ffprobe /bin/ffprobe
 
 COPY requirements.txt ./
 RUN echo "supervisor" >> requirements.txt
