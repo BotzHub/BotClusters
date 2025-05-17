@@ -9,16 +9,5 @@
             "ADMIN_IDS": "7142782067"
         },
         "run": "TEMPMAIL.py"
-    },
-        "bot2": {
-            "source": "https://github.com/BotzHub/TempGmail-Bot",
-            "branch": "main",
-            "env": {
-            "BOT_TOKEN": "7998846643:AAG2n2ziuzp0ASDPQJcKIR26txLJu0o7-gU"
-            "ALLOWED_GROUP_ID": "-1002423153637"
-            "GROUP_USERNAME": "@neogamersnewopte"
-            "ADMIN_IDS": "7142782067"
-            },
-            "run": "TEMPMAIL.py"
         }
     }
