@@ -8,7 +8,7 @@
             "GROUP_USERNAME": "@neogamersnewopte"
             "ADMIN_IDS": "7142782067"
         },
-        "run": "gunicorn app:app & python3 TEMPMAIL.py"
+        "run": "TEMPMAIL.py"
     },
         "bot2": {
             "source": "https://github.com/BotzHub/TempGmail-Bot",
@@ -19,6 +19,6 @@
             "GROUP_USERNAME": "@neogamersnewopte"
             "ADMIN_IDS": "7142782067"
             },
-            "run": "gunicorn app:app & python3 TEMPMAIL.py"
+            "run": "TEMPMAIL.py"
         }
     }
